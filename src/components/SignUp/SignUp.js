@@ -12,7 +12,6 @@ const SignUpPage = () => (
 );
 
 const INITIAL_STATE = {
-  username: '',
   email: '',
   passwordOne: '',
   passwordTwo: '',
@@ -27,7 +26,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const {email, passwordOne } = this.state;
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)

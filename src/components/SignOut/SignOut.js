@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
-import { withRouter,Redirect  } from 'react-router-dom';
+import { withRouter  } from 'react-router-dom';
 import { compose } from 'recompose';
 
 

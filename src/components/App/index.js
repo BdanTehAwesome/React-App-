@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import Navigation from '../Navigation/Nav';
 import LandingPage from '../Landing/Landing';
 import SignUpPage from '../SignUp/SignUp';
@@ -11,20 +9,28 @@ import PasswordForgetPage from '../PasswordForget/PassForgot';
 import HomePage from '../Home/Home';
 import AccountPage from '../Account/Account.js';
 import AdminPage from '../Admin/Admin.js';
+
 import * as ROUTES from '../../constants/routes';
+import { withAuthentication } from '../Session';
+
 const App = () => (
   <Router>
     <div>
       <Navigation />
       <hr />
       <Route exact path={ROUTES.LANDING} component={LandingPage} />
-      <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-      <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-      <Route path={ROUTES.HOME} component={HomePage} />
-      <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-      <Route path={ROUTES.ADMIN} component={AdminPage} />
+      <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
+      <Route exact path={ROUTES.SIGN_IN} component={SignInPage} />
+      <Route
+        exact
+        path={ROUTES.PASSWORD_FORGET}
+        component={PasswordForgetPage}
+      />
+      <Route exact path={ROUTES.HOME} component={HomePage} />
+      <Route exact path={ROUTES.ACCOUNT} component={AccountPage} />
+      <Route exact path={ROUTES.ADMIN} component={AdminPage} />
     </div>
   </Router>
 );
-export default App;
+
+export default withAuthentication(App);
